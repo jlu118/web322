@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>WEB322 Assignment</title>
+	<link rel="stylesheet" type="text/css"  href="/css/gallery.css"/>
+</head>
+
+<body >
+
+	<form method="post" action="/register">
+
+		<h1>Emily Blincoe</h1>
+
+		<div class="clsregistercontent">
+			<h3>Account Registration</h3>
+			<br>
+			<input id="txtUserName" name="txtUserName" type="email" placeholder="Email" value="{{form.txtUserName}}">
+			<br>
+			<input id="txtPassword" name="txtPassword" type="password" placeholder="Password" value="{{form.txtPassword}}">
+			<br>
+			<input id="txtConfirmPassword" name="txtConfirmPassword" type="password" placeholder="Confirm Password"
+				value="{{form.txtConfirmPassword}}">
+			<br>
+			<button id="btnRegister" type="submit" value="submit">Register</button>
+			<br>
+			<label id="lblMessage">{{lblMessage}}</label>
+		</div>
+
+	</form>
+
+
+</body>
+
+</html>

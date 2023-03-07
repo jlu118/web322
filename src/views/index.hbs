@@ -1,0 +1,56 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/gallery.css" />
+    <script src="/js/gallery_client.js"></script>
+    <style>
+      .title{ text-align: center; } .container{ display: flex; align-items:
+      center;} .c-left div{ margin: 10px 0; } .c-left{ width: 35%; text-align:
+      center; } .c-right{ flex: 1; } .photo{ width: 400px; height: 400px;
+      border: 6px solid #222; } .container{padding: 0 200px;}.clsUsernameLogout{
+      margin-right:400px !important;width: unset !important; }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Web 322 Assignment1 Gallery</h1>
+    <div class="container">
+      <div class="clsSelection">
+        <form id="formGallery" action="/gallery" method="post">
+
+          {{#each data}}
+            <div>
+              <label for="{{this}}">
+                <input
+                  type="radio"
+                  name="image"
+                  id="{{this}}"
+                  value="{{this}}"
+                />{{this}}
+              </label>
+            </div>
+          {{/each}}
+
+          <button type="submit">submit</button>
+        </form>
+      </div>
+      <div class="clsContent">
+        <img src="{{photo}}" class="photo" alt="" />
+      </div>
+
+      <div class="clsImageName">
+        {{photo}}
+      </div>
+
+      <div class="clsUsernameLogout">
+        <div id="divUsername">{{form.txtUserName}}</div>
+        <div id="divLogout"><a
+            id="aLogout"
+            onclick="fSubmitLogout();"
+          >Logout</a></div>
+      </div>
+    </div>
+  </body>
+</html>

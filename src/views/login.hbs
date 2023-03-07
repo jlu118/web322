@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>WEB322 Assignment</title>
+	<link rel="stylesheet" type="text/css" href="/css/gallery.css"/>
+</head>
+
+<body>
+
+	<form method="post" action="/">
+
+		<h1>Emily Blincoe</h1>
+
+		<div class="clslogincontent">
+			<h3>Login</h3>
+			<br>
+			<input id="txtUserName" name="txtUserName" type="text" required="" placeholder="Username" value="{{form.txtUserName}}">
+			<br>
+			<input id="txtPassword" name="txtPassword" type="password" required="" placeholder="Password" value="{{form.txtPassword}}">
+			<br>
+			<button id="btnLogin" type="submit" value="submit">Submit</button>
+			<br>
+			<a id="aRegister" href="/register">Register</a>
+			<br>
+			<label id="lblMessage">{{lblMessage}}</label>
+		</div>
+
+	</form>
+
+
+</body>
+
+</html>
