@@ -10,7 +10,11 @@
       .title{ text-align: center; } .container{ display: flex; align-items:
       center;} .c-left div{ margin: 10px 0; } .c-left{ width: 35%; text-align:
       center; } .c-right{ flex: 1; } .photo{ width: 400px; height: 400px;
-      border: 6px solid #222; } .container{padding: 0 200px;}.clsUsernameLogout{
+      border: 6px solid #222; } .photoactive{ width: 200px; height:
+      200px;position: relative;display: block; border: 6px solid #222;
+      margin-bottom: 20px; } .clsContent button{ display: inline-block; width:
+      100px;margin-right: 60px;} .clsContent button:last-child{ margin-right:
+      unset;} .container{padding: 0 200px;} .clsUsernameLogout{
       margin-right:400px !important;width: unset !important; }
     </style>
   </head>
@@ -20,7 +24,7 @@
       <div class="clsSelection">
         <form id="formGallery" action="/gallery" method="post">
 
-          {{#each data}}
+          {{!-- {{#each data}}
             <div>
               <label for="{{this}}">
                 <input
@@ -31,13 +35,55 @@
                 />{{this}}
               </label>
             </div>
+          {{/each}} --}}
+          {{!-- {{photo_name}} --}}
+          <select name="image" id="image">
+          {{#each data}}
+            {{#compare  photo_name 'eq' this}}
+            <option value="{{this}}" selected disabled>{{this}}</option>
+            {{else}}
+            <option value="{{this}}">{{this}}</option>
+            {{/compare}}
           {{/each}}
+          </select>
 
           <button type="submit">submit</button>
         </form>
       </div>
       <div class="clsContent">
-        <img src="{{photo}}" class="photo" alt="" />
+        <a id="aphotoactive" ondblclick="fSubmitphotoactive();">
+          <img src="{{photo}}" class="photo {{photo_class}}" alt="" />
+        </a>
+        <form
+          id="formPhoto"
+          action="/photo"
+          method="post"
+          style="display: none;"
+        >
+          <input
+            type="text"
+            name="image"
+            id="iphotoimg"
+            value="{{photo_name}}"
+          />
+          {{!-- <div id="iphotoimgtxt">{{photo_name}}</div> --}}
+        </form>
+        {{#if photo_class}}
+          <div>Leaf: {{photo_detail.filename}}</div>
+          <div>From trees: {{photo_detail.description}}</div>
+          <div>CAD: {{photo_detail.price}}</div>
+          <div style="display: flex;justify-content: center;">
+            <button onclick="fSubmitphotocansel();">Cansel</button>
+            <button onclick="fSubmitphotobuy();">Buy</button>
+          </div>
+        {{/if}}
+
+        {{#if photo_buy}}
+          <script>
+            alert('SOLID!!!'); document.getElementById("formGallery").action =
+            "/gallery"; document.getElementById("formGallery").submit();
+          </script>
+        {{/if}}
       </div>
 
       <div class="clsImageName">
